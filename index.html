@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090b14"><title>RAMADAN CLIPPING — AI Auto Clipper</title>
+</head>
+<body>
+<div id="app">
+<header><div class="brand"><div class="logo">RC</div><div><b>RAMADAN CLIPPING</b><small>AI CREATOR WORKSPACE</small></div></div><span class="status">● AI + MP4 ENGINE</span></header>
+<main>
+<section class="hero"><div class="eyebrow">✦ YOUR CREATOR WORKFLOW</div><h1>Video panjang jadi <span>short clips.</span></h1><p>Upload video milikmu, minta AI menyusun kandidat klip dan narasi, lalu potong MP4 langsung di browser.</p></section>
+<section class="panel">
+<h2>01 / Sumber video</h2>
+<label class="label" for="videoFile">Upload file video milikmu</label><input id="videoFile" type="file" accept="video/*" class="field">
+<div id="fileInfo" class="muted">File diproses di browser perangkatmu. Tidak di-upload ke backend AI.</div>
+<div class="two">
+<div><label class="label" for="ratio">Rasio output</label><select id="ratio" class="field"><option value="9:16">9:16 — Shorts/Reels</option><option value="1:1">1:1 — Square</option><option value="16:9">16:9 — Landscape</option></select></div>
+<div><label class="label" for="duration">Target klip</label><select id="duration" class="field"><option value="15">15 detik</option><option value="30" selected>30 detik</option><option value="45">45 detik</option><option value="60">60 detik</option></select></div>
+</div>
+<label class="label" for="transcript">Transkrip video (diperlukan untuk ide klip AI)</label><textarea id="transcript" class="field" rows="5" placeholder="Tempel transkrip / teks dialog video di sini. Sertakan timestamp bila ada, misalnya [00:35] ..."></textarea>
+<div class="two">
+<div><label class="label" for="language">Bahasa narasi</label><select id="language" class="field"><option>Bahasa Indonesia</option><option>English</option><option>Bahasa Melayu</option></select></div>
+<div><label class="label" for="style">Gaya konten</label><select id="style" class="field"><option>Hook kuat / viral</option><option>Edukasi & fakta</option><option>Podcast highlight</option><option>Motivasi</option><option>Komedi / reaksi</option><option>Storytelling</option></select></div>
+</div>
+<button id="analyzeBtn" class="primary">✦ ANALISIS DENGAN GEMINI AI</button>
+<div id="aiStatus" class="muted" aria-live="polite"></div>
+<div class="note"><b>Transparansi:</b> AI membuat kandidat timestamp berdasarkan transkrip dan durasi video; hasil waktunya perlu dicek. Untuk transkripsi otomatis dari audio, sambungkan layanan speech-to-text tersendiri. Jangan upload konten yang tidak kamu miliki haknya.</div>
+</section>
+<section class="panel">
+<div class="sectionhead"><h2>02 / Kandidat klip</h2><button id="demoBtn" class="secondary">Buat contoh tanpa API</button></div>
+<div id="clips" class="empty">Upload video dan analisis transkrip untuk melihat kandidat klip.</div>
+</section>
+<section class="panel">
+<h2>03 / Potong dan export MP4</h2>
+<p class="muted">Pilih kandidat klip di atas, periksa waktu mulai dan akhir, lalu jalankan pemotongan FFmpeg di browser.</p>
+<div class="two">
+<div><label class="label" for="startTime">Mulai (detik)</label><input id="startTime" class="field" type="number" min="0" step="0.1" value="0"></div>
+<div><label class="label" for="endTime">Akhir (detik)</label><input id="endTime" class="field" type="number" min="1" step="0.1" value="30"></div>
+</div>
+<button id="cutBtn" class="primary">✂ POTONG VIDEO JADI MP4</button>
+<div id="cutStatus" class="muted" aria-live="polite"></div>
+<video id="preview" controls playsinline hidden></video>
+<a id="download" class="download" hidden download="ramadan-clipping.mp4">⬇ Download MP4</a>
+</section>
+<footer>RAMADAN CLIPPING • Vite + Vercel Functions + Gemini API + FFmpeg.wasm</footer>
+</main></div>
+<script type="module" src="/src/main.js"></script>
+</body></html>
